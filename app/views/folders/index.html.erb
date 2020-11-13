@@ -11,6 +11,8 @@
         <%= icon('fas', 'folder fa-5x text-primary') %>
         <p class="small mt-3 mb-0 text-muted"><%= folder.name %></p>
       <% end %>
+      <%= link_to icon('fas', 'edit'), edit_folder_path(folder),  class: 'position-absolute btn btn-light btn-sm text-primary position-absolute', title: 'Renomear', data: {toggle: 'tooltip'}, style: 'top: 0; right: 42px' %>
+      <%= link_to icon('fas', 'trash'), folder, method: :delete, data: { confirm: 'Tem certeza disso?', toggle: 'tooltip'}, title: 'Excluir', class: 'position-absolute btn btn-light btn-sm text-danger position-absolute', style: 'top: 0; right: 15px' %>
     </div>
   <% end %>
   <div class="col-lg-3 col-md-4 col-sm-6">
