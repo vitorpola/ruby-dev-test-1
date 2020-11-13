@@ -1,0 +1,25 @@
+<nav aria-label="breadcrumb ">
+  <ol class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Principal', folders_path %></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <% @folders.each do |folder| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <%= link_to folder, class:"card text-center card-body bg-light border-0" do %>
+        <%= icon('fas', 'folder fa-5x text-primary') %>
+        <p class="small mt-3 mb-0 text-muted"><%= folder.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <%= link_to new_folder_path, class:"card text-center card-body bg-light border-0" do %>
+      <div class="position-relative">
+        <%= icon('far', 'folder fa-5x text-muted') %>
+        <%= icon('fas', 'plus fa-2x text-muted position-absolute bg-light rounded p-1', style: 'bottom: 0px;margin-left: -26px') %>
+      </div>
+      <p class="small mt-3 mb-0 text-muted">Novo Diretório</p>
+    <% end %>
+  </div>
+</div>

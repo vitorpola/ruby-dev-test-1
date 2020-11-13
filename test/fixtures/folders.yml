@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Raiz
+  parent_id: null
+
+two:
+  name: Subdiretorio
+  parent_id: 1
+

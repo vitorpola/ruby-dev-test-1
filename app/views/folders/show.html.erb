@@ -1,0 +1,53 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Principal', folders_path %></li>
+    <% @parents.each do |folder| %>
+      <li class="breadcrumb-item"><%= link_to folder.name, folder %></li>
+    <% end %>
+    <li class="ml-auto">
+      <%= link_to icon('fas', 'edit') + ' RENOMEAR', edit_folder_path(@folder) %>
+      <%= link_to icon('fas', 'trash') + ' EXCLUIR', @folder, method: :delete, data: { confirm: 'Tem certeza?'}, class: 'text-danger ml-3' %>
+    </li>
+  </ol>
+</nav>
+
+<div class="row">
+  <% @folder.subfolders.each do |folder| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <%= link_to folder, class:"card mb-3 text-center card-body bg-light border-0" do %>
+        <%= icon('fas', 'folder fa-5x text-primary') %>
+        <p class="small mt-3 mb-0 text-muted"><%= folder.name %></p>
+      <% end %>
+      <%= link_to icon('fas', 'edit'), edit_folder_path(folder),  class: 'position-absolute btn btn-light btn-sm text-primary position-absolute', title: 'Renomear', data: {toggle: 'tooltip'}, style: 'top: 0; right: 42px' %>
+      <%= link_to icon('fas', 'trash'), folder, method: :delete, data: { confirm: 'Tem certeza disso?', toggle: 'tooltip'}, title: 'Excluir', class: 'position-absolute btn btn-light btn-sm text-danger position-absolute', style: 'top: 0; right: 15px' %>
+    </div>
+  <% end %>
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <%= link_to new_folder_path(parent_id: @folder.id), class:"card text-center card-body bg-light border-0" do %>
+      <div class="position-relative">
+        <%= icon('far', 'folder fa-5x text-muted') %>
+        <%= icon('fas', 'plus fa-2x text-muted position-absolute bg-light rounded p-1', style: 'bottom: 0px;margin-left: -26px') %>
+      </div>
+      <p class="small mt-3 mb-0 text-muted">Novo Diretório</p>
+    <% end %>
+  </div>
+  <% @folder.files.each do |attachment| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <%= link_to attachment, class:"card mb-3 text-center card-body bg-light border-0", target: :_blank do %>
+        <%= icon('fas', 'file fa-5x text-primary') %>
+        <p class="small mt-3 mb-0 text-muted text-truncate"><%= attachment.filename %></p>
+      <% end %>
+      <%= link_to icon('fas', 'trash'), remove_file_folder_path(attachment, folder_id: @folder.id), method: :delete, data: { confirm: 'Tem certeza disso?' }, class: 'position-absolute btn btn-light btn-sm text-danger position-absolute', style: 'top: 0; right: 15px' %>
+    </div>
+  <% end %>
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <%= link_to new_file_folder_path(@folder), class:"card text-center card-body bg-light border-0" do %>
+      <div class="position-relative">
+        <%= icon('far', 'file fa-5x text-muted') %>
+        <%= icon('fas', 'plus fa-2x text-muted position-absolute bg-light rounded p-1', style: 'bottom: -5px;margin-left: -26px') %>
+      </div>
+      <p class="small mt-3 mb-0 text-muted">Novo(s) Arquivo(s)</p>
+    <% end %>
+  </div>
+ 
+</div>

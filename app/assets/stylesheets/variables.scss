@@ -1,0 +1,21 @@
+$primary-color: #dd9b43;
+$secondary-color: #748ac5;
+$grey: #787878;  
+$smooth-white: rgba(255, 255, 255, 0.7);
+
+$roboto: 'Roboto', sans-serif;
+
+$gradient-blue: #95c0e5;
+$gradient-pink: #d9c2dd;
+
+$navbar-height: 12vh;
+$carousel-height: 88vh;
+
+$theme-colors: (
+  "primary": $primary-color,
+);
+
+$breakpoint-lg: 1199px;
+$breakpoint-md: 991px;
+$breakpoint-sm: 767px;
+$breakpoint-xs: 575px;

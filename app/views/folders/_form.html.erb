@@ -1,0 +1,10 @@
+<%= form_with(model: folder, local: true) do |form| %>
+  <%= form.hidden_field :parent_id, value: params[:parent_id] if params[:parent_id].present? %>
+
+  <div class="form-group">
+    <%= form.text_field :name, class: 'form-control', required: true, placeholder: 'Nome', autofocus: true %>
+  </div>
+
+  <%= link_to 'Voltar', params[:parent_id].present? ? folder_path(params[:parent_id]) : folders_path, class:'btn btn-link'%>
+  <%= form.submit 'Confirmar', class:'btn btn-primary' %>
+<% end %>

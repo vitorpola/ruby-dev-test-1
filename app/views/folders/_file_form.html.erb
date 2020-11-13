@@ -1,0 +1,15 @@
+<%= form_for folder, html: {multipart: true} do |f| %>
+  <%= f.hidden_field :id %>
+  <div class="form-group">
+    <div class="input-group custom-file-field">
+      <%= text_field_tag "a", nil, readonly:true, required: true, class:'form-control bg-white' %>
+      <div class="input-group-append">
+        <label class="btn btn-light border mb-0"><i class="fa fa-paperclip"></i> ANEXAR ARQUIVO(S)
+          <%= f.file_field :files, hidden: true, multiple: true, direct_upload: true %>
+        </label>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'Voltar', folder, class:'btn btn-link'%>
+  <%= f.submit 'Confirmar', class:'btn btn-primary' %>
+<% end %>
